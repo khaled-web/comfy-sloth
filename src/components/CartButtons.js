@@ -8,9 +8,10 @@ import { useUserContext } from '../context/user_context'
 import Wrapper from '../assets/Wrapper/CartButton.js'
 
 const CartButtons = () => {
+  const{closeSidebar}=useProductsContext()
   return(
     <Wrapper className='cart-btn-wrapper'>
-      <Link to='/cart' className='cart-btn'>
+      <Link to='/cart' className='cart-btn' onClick={()=>closeSidebar()}>
         Cart
         <span className="cart-container">
           <FaShoppingCart/>

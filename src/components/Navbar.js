@@ -10,6 +10,9 @@ import { useUserContext } from '../context/user_context'
 import Wrapper from '../assets/Wrapper/NavContainer.js'
 
 const Nav = () => {
+  const {
+    openSidebar
+  }=useProductsContext()
   return(
     <Wrapper>
       <div className="nav-center">
@@ -17,7 +20,7 @@ const Nav = () => {
           <Link to='/'>
             <img src={logo} alt="Comfy sloth"/>
           </Link>
-          <button type='button' className='nav-toggle'>
+          <button type='button' className='nav-toggle' onClick={()=>openSidebar()}>
             <FaBars/>
           </button>
         </div>

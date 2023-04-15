@@ -14,7 +14,7 @@ import {
 } from '../actions'
 
 const initialState = {
-  isSidebarOpen:false
+  isSidebarOpen:true
 }
 
 const ProductsContext = React.createContext()
@@ -37,7 +37,7 @@ const ProductsContext = React.createContext()
   
 
   return (
-    <ProductsContext.Provider value={{...state,openSidebar,closeSidebar}}>
+    <ProductsContext.Provider value={{...state,openSidebar,closeSidebar }}>
       {children}
     </ProductsContext.Provider>
   )
