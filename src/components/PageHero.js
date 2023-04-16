@@ -14,6 +14,4 @@ const PageHero = ({title}) => {
   )
 }
 
-
-
 export default PageHero
