@@ -13,14 +13,15 @@ const connectDB = require('./db/connect.js')
 //morgan
 const morgan = require('morgan')
 //routes
-
+const authRouter = require('./routes/Auth.js')
 
 //middleware
 const notFoundMiddleware = require('./middleware/not-found.js')
 const errorHandlerMiddleware = require('./middleware/error-handler.js')
 //authenticateUser
 const authenticateUser = require('./middleware/auth-JWT.js')
-
+//cookie-parser
+const cookieParser = require('cookie-parser')
 
 //.........
 //AppData
@@ -31,12 +32,17 @@ if (process.env.NODE_ENV !== 'production') {
 }
 //usingData.jsonInPostman
 app.use(express.json())
+//cookieParser(toGetTokenDuring"1d")
+app.use(cookieParser())
 //GeneralRoute
 app.get('/', (req, res) => {
- // throw new Error('error')
  res.json({
   msg: "Welcome"
  })
+})
+app.get('/api/v1', (req, res) => {
+ console.log(req.cookies)
+ res.send('comfy sloth')
 })
 
 app.get('/api/v1', (req, res) => {
@@ -46,6 +52,7 @@ app.get('/api/v1', (req, res) => {
  })
 })
 //routes
+app.use('/api/v1/auth', authRouter)
 
 //middleware
 app.use(notFoundMiddleware)
