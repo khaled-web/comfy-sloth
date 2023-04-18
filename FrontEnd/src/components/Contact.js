@@ -1,7 +1,8 @@
-import React from 'react'
+import React, {useRef} from 'react'
 import styled from 'styled-components'
 import Wrapper from '../assets/Wrapper/Contact-Home.js'
 const Contact = () => {
+
   return(
     <Wrapper>
       <div className="section-center">
@@ -12,8 +13,9 @@ const Contact = () => {
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste veritatis exercitationem pariatur qui doloribus quibusdam.
           </p>
-          <form className='contact-form'>
-            <input type="email" className='form-input' placeholder='enter email'/>
+          <form action="https://formspree.io/f/mnqyoedy"
+            method="POST" className='contact-form'>
+            <input type="email" className='form-input' placeholder='enter email' name='_replyto'/>
             <button type='submit' className='submit-btn'>
               subscribe
             </button>
