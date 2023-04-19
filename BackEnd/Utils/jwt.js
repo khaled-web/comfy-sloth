@@ -41,10 +41,6 @@ const attachCookiesToResponse = ({
   signed: true
  })
 
- //Response
- res.status(StatusCodes.CREATED).json({
-  user
- })
 }
 
 //............
