@@ -32,8 +32,8 @@ if (process.env.NODE_ENV !== 'production') {
 }
 //usingData.jsonInPostman
 app.use(express.json())
-//cookieParser(toGetTokenDuring"1d")
-app.use(cookieParser())
+//cookieParser(toGetTokenFor"1d")
+app.use(cookieParser(process.env.JWT_SECRET))
 //GeneralRoute
 app.get('/', (req, res) => {
  res.json({
@@ -41,7 +41,7 @@ app.get('/', (req, res) => {
  })
 })
 app.get('/api/v1', (req, res) => {
- console.log(req.cookies)
+ console.log(req.signedCookies)
  res.send('comfy sloth')
 })
 

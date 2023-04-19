@@ -1,9 +1,11 @@
 const {
  createJwt,
- isTokenValid
+ isTokenValid,
+ attachCookiesToResponse
 } = require('./jwt.js')
 
 module.exports = {
  createJwt,
- isTokenValid
+ isTokenValid,
+ attachCookiesToResponse
 }

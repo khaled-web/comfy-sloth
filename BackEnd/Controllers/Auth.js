@@ -9,7 +9,8 @@ const CustomError = require('../errors')
 const jwt = require('jsonwebtoken')
 const {
  createJwt,
- isTokenValid
+ isTokenValid,
+ attachCookiesToResponse
 } = require('../Utils')
 //............
 //app
@@ -38,23 +39,17 @@ const register = async (req, res) => {
   password,
   role
  })
+
  //creatingJWT
  const tokenUser = {
   name: user.name,
   userId: user._id,
   role: user.role
  }
- const token = createJwt({
-  payload: tokenUser
- })
- //sureSetTokenValidForOneDay
- const oneDay = 1000 * 60 * 60 * 24
- res.cookie('token', token, {
-  httpOnly: true,
-  expires: new Date(Date.now() + oneDay)
- })
- //Response
- res.status(StatusCodes.CREATED).json({
+
+ //ResponseWithJWTAsCookies
+ attachCookiesToResponse({
+  res,
   user: tokenUser
  })
 }
