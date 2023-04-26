@@ -14,6 +14,7 @@ const connectDB = require('./db/connect.js')
 const morgan = require('morgan')
 //routes
 const authRouter = require('./routes/Auth.js')
+const userRouter = require('./routes/User.js')
 
 //middleware
 const notFoundMiddleware = require('./middleware/not-found.js')
@@ -53,7 +54,7 @@ app.get('/api/v1', (req, res) => {
 })
 //routes
 app.use('/api/v1/auth', authRouter)
-
+app.use('/api/v1/user', userRouter)
 //middleware
 app.use(notFoundMiddleware)
 app.use(errorHandlerMiddleware)
