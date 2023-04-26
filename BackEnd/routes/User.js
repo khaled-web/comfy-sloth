@@ -18,8 +18,8 @@ const {
 //app
 //............
 router.route('/').get(authenticateUser, authorizePermissions('admin'), getAllUsers)
-router.route('/showMe').get(showCurrentUser)
-router.route('/updateUserPassword').patch(updatePassword)
+router.route('/showMe').get(authenticateUser, showCurrentUser)
+router.route('/updateUserPassword').patch(authenticateUser, updatePassword)
 router.route('/updateUserName').patch(updateUserName)
 router.route('/:id').get(authenticateUser, getSingleUser)
 
