@@ -10,7 +10,8 @@ const jwt = require('jsonwebtoken')
 const {
  createJwt,
  isTokenValid,
- attachCookiesToResponse
+ attachCookiesToResponse,
+ createTokenUser
 } = require('../Utils')
 //............
 //app
@@ -41,11 +42,7 @@ const register = async (req, res) => {
  })
 
  //creatingJWT
- const tokenUser = {
-  name: user.name,
-  userId: user._id,
-  role: user.role
- }
+ const tokenUser = createTokenUser(user)
 
  //ResponseWithJWTAsCookies
  attachCookiesToResponse({
@@ -81,11 +78,7 @@ const login = async (req, res) => {
  }
 
  //creatingJWT
- const tokenUser = {
-  name: user.name,
-  userId: user._id,
-  role: user.role
- }
+ const tokenUser = createTokenUser(user)
 
  //ResponseWithJWTAsCookies
  attachCookiesToResponse({
@@ -93,7 +86,7 @@ const login = async (req, res) => {
   user: tokenUser
  })
 
- res.status(StatusCodes.CREATED).json({
+ res.status(StatusCodes.OK).json({
   tokenUser
  })
 

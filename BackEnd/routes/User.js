@@ -20,7 +20,7 @@ const {
 router.route('/').get(authenticateUser, authorizePermissions('admin'), getAllUsers)
 router.route('/showMe').get(authenticateUser, showCurrentUser)
 router.route('/updateUserPassword').patch(authenticateUser, updatePassword)
-router.route('/updateUserName').patch(updateUserName)
+router.route('/updateUserName').patch(authenticateUser, updateUserName)
 router.route('/:id').get(authenticateUser, getSingleUser)
 
 
