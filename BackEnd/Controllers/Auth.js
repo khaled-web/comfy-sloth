@@ -41,10 +41,10 @@ const register = async (req, res) => {
   role
  })
 
- //creatingJWT
+ //creatingJWT(utilsFolder)
  const tokenUser = createTokenUser(user)
 
- //ResponseWithJWTAsCookies
+ //ResponseWithJWTAsCookies(utilsFolder)
  attachCookiesToResponse({
   res,
   user: tokenUser
@@ -77,10 +77,10 @@ const login = async (req, res) => {
   throw new CustomError.UnauthenticatedError("Invalid Credentials")
  }
 
- //creatingJWT
+ //creatingJWT(utilsFolder)
  const tokenUser = createTokenUser(user)
 
- //ResponseWithJWTAsCookies
+ //ResponseWithJWTAsCookies(utilsFolder)
  attachCookiesToResponse({
   res,
   user: tokenUser

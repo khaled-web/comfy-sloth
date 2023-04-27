@@ -12,7 +12,8 @@ const {
  createJwt,
  isTokenValid,
  attachCookiesToResponse,
- createTokenUser
+ createTokenUser,
+ checkPermission
 } = require('../Utils')
 
 //............
@@ -37,7 +38,8 @@ const getSingleUser = async (req, res) => {
  if (!user) {
   throw new CustomError.NotFoundError(`no user with id ${req.params.id}`)
  }
-
+ //ToSetAdminOnlyToBeAccessOnThisRoute
+ checkPermission(req.user, user._id)
  res.status(StatusCodes.OK).json({
   user
  })
@@ -79,7 +81,7 @@ const updatePassword = async (req, res) => {
  })
 }
 
-//updateUserName
+//updateUserName(user.save())
 const updateUserName = async (req, res) => {
  const {
   email,
@@ -89,18 +91,16 @@ const updateUserName = async (req, res) => {
   throw new CustomError.BadRequestError('Please provide all values')
  }
 
- const user = await User.findOneAndUpdate({
+ const user = await User.findOne({
   _id: req.user.userId
- }, {
-  email,
-  name
- }, {
-  new: true,
-  runValidators: true
  })
- //createUserToken
+
+ user.email = email
+ user.name = name
+ await user.save()
+ //createUserToken(utilsFolder)
  const tokenUser = createTokenUser(user)
- //createAnewJWT
+ //createAnewJWT(utilsFolder)
  attachCookiesToResponse({
   res,
   user: tokenUser
@@ -112,6 +112,40 @@ const updateUserName = async (req, res) => {
  })
 
 }
+
+//updateUserName(findOneAndUpdate)
+// const updateUserName = async (req, res) => {
+//  const {
+//   email,
+//   name
+//  } = req.body
+//  if (!email || !name) {
+//   throw new CustomError.BadRequestError('Please provide all values')
+//  }
+
+//  const user = await User.findOneAndUpdate({
+//   _id: req.user.userId
+//  }, {
+//   email,
+//   name
+//  }, {
+//   new: true,
+//   runValidators: true
+//  })
+//  //createUserToken(utilsFolder)
+//  const tokenUser = createTokenUser(user)
+//  //createAnewJWT(utilsFolder)
+//  attachCookiesToResponse({
+//   res,
+//   user: tokenUser
+//  })
+
+//  //response
+//  res.status(StatusCodes.OK).json({
+//   user: tokenUser
+//  })
+
+// }
 
 
 module.exports = {

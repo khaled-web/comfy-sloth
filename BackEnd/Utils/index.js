@@ -6,9 +6,12 @@ const {
 
 const createTokenUser = require('./createTokenUser.js')
 
+const checkPermission = require('./checkPermission.js')
+
 module.exports = {
  createJwt,
  isTokenValid,
  attachCookiesToResponse,
- createTokenUser
+ createTokenUser,
+ checkPermission
 }
