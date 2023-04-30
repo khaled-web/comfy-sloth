@@ -11,7 +11,8 @@ import {
  Error,
  PrivateRoute,
  Product,
- SingleProduct} from './pages'
+ SingleProduct,
+Register} from './pages'
 
 
 function App() {
@@ -51,10 +52,7 @@ function App() {
     //   <Footer/>
     // </Router>
 
-
     <BrowserRouter>
-      <Navbar/>
-      <Sidebar/>
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/about' element={<About/>}/>
@@ -62,9 +60,11 @@ function App() {
         <Route path='/products' element={<Product/>}/>
         <Route path='/products/:id' element={<SingleProduct/>}/>
         <Route path='/checkout' element={<Checkout/>}/>
+        <Route path='/checkout' element={<Checkout/>}/>
+        <Route path='/checkout' element={<Checkout/>}/>
+        <Route path='/register' element={<Register/>}/>
         <Route path='*' element={<Error/>}/>
       </Routes>
-      <Footer/>
     </BrowserRouter>
   )
 }

@@ -7,6 +7,7 @@ import Error from './ErrorPage.js'
 import PrivateRoute from './PrivateRoute.js'
 import Product from './ProductsPage.js'
 import SingleProduct from './SingleProductPage.js'
+import Register from './Register.js'
 
 export {
  Home,
@@ -17,5 +18,6 @@ export {
  Error,
  PrivateRoute,
  Product,
- SingleProduct
+ SingleProduct,
+ Register
 }
