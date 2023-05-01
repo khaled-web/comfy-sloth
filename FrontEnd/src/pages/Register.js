@@ -5,6 +5,7 @@
 import React, {useState, useEffect} from 'react'
 import {Logo, FormRow, Alert} from '../components'
 import Wrapper from '../assets/Wrapper/RegisterPage'
+import {useUserContext} from '../context/user_context'
 
 //........
 //app
@@ -14,12 +15,13 @@ const initialState = {
   email:'',
   password:'',
   isMember:true,
-  showAlert:true
 }
 
 const Register = () => {
   const [values, setValues]=useState(initialState)
   //global state and useNavigate
+
+  const {isLoading, showAlert,displayAlert, clearAlert} = useUserContext()
 
   //toggleMember
   const toggleMember = ()=>{
@@ -28,12 +30,18 @@ const Register = () => {
 
   //handleChange
   const handleChange = (e)=>{
-    console.log(e.target)
+    setValues({...values, [e.target.name]:e.target.value})
   }
   //onSubmit
   const onSubmit = (e)=>{
     e.preventDefault()
-    console.log(e.target)
+    const{email, password, name, isMember} = values
+    if(!email || !password || (!name && !isMember)){
+      displayAlert()
+      clearAlert()
+      return
+    }
+    console.log(values)
   }
   return (
     <Wrapper className='full-page'>
@@ -41,14 +49,14 @@ const Register = () => {
         <Logo/>
         <h3>{values.isMember?"login":"register"}</h3>
         {/* displayingAlert */}
-        {values.showAlert && <Alert/>}
+        {showAlert && <Alert/>}
         {/* name input */}
         {
         !values.isMember&&
         <FormRow type='text' name='name' value={values.name} handleChange={handleChange}/>        
         }
         {/* email input */}
-        <FormRow type='email' name='email' value={values.name} handleChange={handleChange}/>
+        <FormRow type='email' name='email' value={values.email} handleChange={handleChange}/>
         {/* password input */}
         <FormRow type='password' name='password' value={values.password} handleChange={handleChange}/>
         <button type='submit' className='btn btn-block'>
