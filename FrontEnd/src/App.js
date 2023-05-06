@@ -13,7 +13,8 @@ import {
  Product,
  SingleProduct,
 Register,
-DashBoard} from './pages'
+DashBoard,
+ProtectedRoute} from './pages'
 
 
 function App() {
@@ -56,7 +57,11 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path='/register' element={<Register/>}/>
-        <Route path='/' element={<Home/>}/>
+        <Route path='/' element={
+          <ProtectedRoute>
+            <Home/>
+          </ProtectedRoute>
+        }/>
         <Route path='/about' element={<About/>}/>
         <Route path='/cart' element={<Cart/>}/>
         <Route path='/products' element={<Product/>}/>

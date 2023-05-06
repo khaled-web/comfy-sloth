@@ -8,6 +8,7 @@ import PrivateRoute from './PrivateRoute.js'
 import Product from './ProductsPage.js'
 import SingleProduct from './SingleProductPage.js'
 import Register from './Register.js'
+import ProtectedRoute from './ProtectedRoute.js'
 
 export {
  Home,
@@ -20,4 +21,5 @@ export {
  Product,
  SingleProduct,
  Register,
+ ProtectedRoute
 }
