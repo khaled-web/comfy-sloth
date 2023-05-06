@@ -12,7 +12,8 @@ import {
  PrivateRoute,
  Product,
  SingleProduct,
-Register} from './pages'
+Register,
+DashBoard} from './pages'
 
 
 function App() {

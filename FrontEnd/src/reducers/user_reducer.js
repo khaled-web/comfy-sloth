@@ -1,6 +1,9 @@
 import {
  DISPLAY_ALERT,
- CLEAR_ALERT
+ CLEAR_ALERT,
+ REGISTER_USER_BEGIN,
+ REGISTER_USER_SUCCESS,
+ REGISTER_USER_ERROR
 } from '../actions'
 
 const user_reducer = (state, action) => {
@@ -9,8 +12,8 @@ const user_reducer = (state, action) => {
   return {
    ...state,
    showAlert: true,
-   alertType: 'danger',
-   alertText: 'Please provide all values'
+   AlertType: 'danger',
+   AlertText: 'Please provide all values'
   }
  }
  //User-ClearAlert
@@ -19,7 +22,37 @@ const user_reducer = (state, action) => {
    ...state,
    showAlert: false,
    AlertText: '',
-   alertType: ''
+   AlertType: ''
+  }
+ }
+ //Register_user_begin
+ if (action.type === REGISTER_USER_BEGIN) {
+  return {
+   ...state,
+   isLoading: true
+  }
+ }
+ //Register_user_success
+ if (action.type === REGISTER_USER_SUCCESS) {
+  return {
+   ...state,
+   token: action.payload.token,
+   user: action.payload.tokenUser.name,
+   userRole: action.payload.tokenUser.role,
+   isLoading: false,
+   showAlert: true,
+   AlertType: 'success',
+   AlertText: 'User Created! Redirecting...'
+  }
+ }
+ //Register_user_Error
+ if (action.type === REGISTER_USER_ERROR) {
+  return {
+   ...state,
+   isLoading: false,
+   showAlert: true,
+   AlertType: 'danger',
+   AlertText: action.payload.msg
   }
  }
  throw new Error(`no Such action: ${action.type}`)

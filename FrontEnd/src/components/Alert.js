@@ -2,10 +2,17 @@ import React from 'react'
 import {useUserContext} from '../context/user_context'
 
 const Alert = () => {
-  const {alertType, alertText} = useUserContext()
+  const {
+    AlertText,
+    AlertType
+  } = useUserContext()
   return (
-    <div className={`alert alert-${alertType}`}>
-      {alertText}
+    <div div className = {
+      `alert alert-${AlertType}`
+    } >
+      {
+        AlertText
+      }
     </div>
   )
 }

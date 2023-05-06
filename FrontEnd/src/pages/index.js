@@ -19,5 +19,5 @@ export {
  PrivateRoute,
  Product,
  SingleProduct,
- Register
+ Register,
 }

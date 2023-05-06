@@ -1,6 +1,8 @@
 //..............
 //importingData
 //..............
+//cors(fetchingData)
+const cors = require('cors')
 //express
 const express = require('express');
 const app = express()
@@ -31,6 +33,8 @@ const cookieParser = require('cookie-parser')
 if (process.env.NODE_ENV !== 'production') {
  app.use(morgan('dev'))
 }
+//cors-fetchingDataFromBack-endToFront-end
+app.use(cors())
 //usingData.jsonInPostman
 app.use(express.json())
 //cookieParser(toGetTokenFor"1d")
@@ -42,8 +46,10 @@ app.get('/', (req, res) => {
  })
 })
 app.get('/api/v1', (req, res) => {
- console.log(req.signedCookies)
- res.send('comfy sloth')
+ // console.log(req.signedCookies)
+ res.json({
+  msg: 'comfySloth'
+ })
 })
 
 app.get('/api/v1', (req, res) => {

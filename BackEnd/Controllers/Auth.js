@@ -43,6 +43,9 @@ const register = async (req, res) => {
 
  //creatingJWT(utilsFolder)
  const tokenUser = createTokenUser(user)
+ const token = createJwt({
+  payload: tokenUser
+ })
 
  //ResponseWithJWTAsCookies(utilsFolder)
  attachCookiesToResponse({
@@ -51,7 +54,8 @@ const register = async (req, res) => {
  })
 
  res.status(StatusCodes.CREATED).json({
-  tokenUser
+  tokenUser,
+  token
  })
 }
 
@@ -79,7 +83,9 @@ const login = async (req, res) => {
 
  //creatingJWT(utilsFolder)
  const tokenUser = createTokenUser(user)
-
+ const token = createJwt({
+  payload: tokenUser
+ })
  //ResponseWithJWTAsCookies(utilsFolder)
  attachCookiesToResponse({
   res,
@@ -87,7 +93,8 @@ const login = async (req, res) => {
  })
 
  res.status(StatusCodes.OK).json({
-  tokenUser
+  tokenUser,
+  token
  })
 
 }
