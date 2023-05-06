@@ -9,7 +9,10 @@ import {
  CLEAR_ALERT,
  REGISTER_USER_BEGIN,
  REGISTER_USER_SUCCESS,
- REGISTER_USER_ERROR
+ REGISTER_USER_ERROR,
+ LOGIN_USER_BEGIN,
+ LOGIN_USER_SUCCESS,
+ LOGIN_USER_ERROR,
 } from '../actions'
 import axios from 'axios'
 
@@ -90,6 +93,32 @@ export const UserProvider = ({ children }) => {
         payload:{
           msg:error.response.data.msg
         }})
+    }
+    clearAlert()
+  }
+
+  //loginUser
+  const loginUser = async (currentUser)=>{
+    dispatch({type:LOGIN_USER_BEGIN})
+    try {
+      const response = await axios.post('http://localhost:5000/api/v1/auth/login', currentUser)
+      console.log(response)
+      const {token, tokenUser} = response.data
+      dispatch({
+        type: LOGIN_USER_SUCCESS,
+        payload:{token, tokenUser}
+      })
+      addUserToLocalStorage({
+        user:tokenUser.name,
+        token:token,
+        userRole:tokenUser.role
+      })
+    } catch (error) {
+        dispatch({
+      type:LOGIN_USER_ERROR, 
+        payload:{
+          msg:error.response.data.msg
+        }})
       console.log(error)
     }
     clearAlert()
@@ -101,7 +130,8 @@ export const UserProvider = ({ children }) => {
       ...state,
       displayAlert,
       clearAlert,
-      registerUser
+      registerUser,
+      loginUser
     }}>{children}</UserContext.Provider>
   )
 }

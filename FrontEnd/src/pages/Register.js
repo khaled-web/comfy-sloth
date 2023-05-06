@@ -32,7 +32,8 @@ const Register = () => {
     showAlert,
     displayAlert, 
     registerUser,
-    user
+    user,
+    loginUser
   } = useUserContext()
 
   //toggleMember
@@ -55,7 +56,7 @@ const Register = () => {
     }
     const currentUser = {name, email, password}
     if(isMember){
-      console.log('already a member')
+      loginUser(currentUser)
     }
     else{
       registerUser(currentUser)
