@@ -13,6 +13,7 @@ import {
  LOGIN_USER_BEGIN,
  LOGIN_USER_SUCCESS,
  LOGIN_USER_ERROR,
+ LOGOUT_USER
 } from '../actions'
 import axios from 'axios'
 
@@ -124,6 +125,12 @@ export const UserProvider = ({ children }) => {
     clearAlert()
   }
 
+  //logoutUser
+  const logoutUser = ()=>{
+    dispatch({type:LOGOUT_USER})
+    removeUserFromLocalStorage()
+  }
+
 
   return (
     <UserContext.Provider value={{
@@ -131,7 +138,8 @@ export const UserProvider = ({ children }) => {
       displayAlert,
       clearAlert,
       registerUser,
-      loginUser
+      loginUser,
+      logoutUser
     }}>{children}</UserContext.Provider>
   )
 }

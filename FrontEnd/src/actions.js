@@ -9,6 +9,9 @@ export const REGISTER_USER_ERROR = 'REGISTER_USER_ERROR'
 export const LOGIN_USER_BEGIN = 'LOGIN_USER_BEGIN'
 export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS'
 export const LOGIN_USER_ERROR = 'LOGIN_USER_ERROR'
+
+//logout
+export const LOGOUT_USER = 'LOGOUT_USER'
 //Pages-Product
 export const SIDEBAR_OPEN = 'SIDEBAR_OPEN'
 export const SIDEBAR_CLOSE = 'SIDEBAR_CLOSE'

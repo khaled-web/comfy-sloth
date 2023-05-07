@@ -7,6 +7,7 @@ import {
  LOGIN_USER_BEGIN,
  LOGIN_USER_SUCCESS,
  LOGIN_USER_ERROR,
+ LOGOUT_USER
 } from '../actions'
 
 const user_reducer = (state, action) => {
@@ -59,11 +60,6 @@ const user_reducer = (state, action) => {
   }
  }
 
-
-
-
-
-
  //login_user_begin
  if (action.type === LOGIN_USER_BEGIN) {
   return {
@@ -92,6 +88,15 @@ const user_reducer = (state, action) => {
    showAlert: true,
    AlertType: 'danger',
    AlertText: action.payload.msg
+  }
+ }
+ //logo
+ if (action.type === LOGOUT_USER) {
+  return {
+   ...state,
+   user: null,
+   token: null,
+   userRole: ''
   }
  }
  throw new Error(`no Such action: ${action.type}`)

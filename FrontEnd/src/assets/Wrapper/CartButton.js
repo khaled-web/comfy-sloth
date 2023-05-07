@@ -2,7 +2,8 @@ import styled from 'styled-components'
 
 const CartButton = styled.div `
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 1.5rem;
   align-items: center;
   width: 225px;
 
@@ -51,6 +52,26 @@ const CartButton = styled.div `
     svg {
       margin-left: 5px;
     }
+  
+  }
+  .auth-btn-user {
+    display: flex;
+    align-items: center;
+    background: transparent;
+    border-color: transparent;
+    font-size: 1.5rem;
+    color: var(--clr-grey-1);
+    letter-spacing: var(--spacing);
+    /* color: var(--clr-primary-5); */
+    border: 0.025rem solid var(--clr-primary-5);
+    border-radius: .25rem;
+    padding: .25rem;
+    font-size: 1.5rem;
+  }
+
+  .auth-favicon-user{
+    margin-right:.25rem;
+    color: var(--clr-primary-5);
   }
 `
 export default CartButton
