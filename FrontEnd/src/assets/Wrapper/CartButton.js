@@ -73,5 +73,9 @@ const CartButton = styled.div `
     margin-right:.25rem;
     color: var(--clr-primary-5);
   }
+
+  .auth-user{
+    font-size: 1.2rem;
+  }
 `
 export default CartButton

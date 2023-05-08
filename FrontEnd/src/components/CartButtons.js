@@ -23,7 +23,7 @@ const CartButtons = () => {
       </Link>
       <button type='button' className='auth-btn-user'>
         <FaUserCircle className='auth-favicon-user'/>
-        {user}
+        <span className='auth-user'>{user}</span>
       </button>
       <button type='button' className='auth-btn' onClick={logoutUser}>
         logout <FaUserMinus/>
