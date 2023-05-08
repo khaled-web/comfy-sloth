@@ -16,7 +16,6 @@ const {
  authorizePermissions
 } = require('../middleware/authenticateUser.js')
 
-
 //............
 //App
 //............
