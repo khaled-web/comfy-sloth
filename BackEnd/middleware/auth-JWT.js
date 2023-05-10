@@ -9,7 +9,6 @@ const jwt = require('jsonwebtoken')
 //AppData
 //.........
 const auth = async (req, res, next) => {
- const headers = req.headers
  const authHeaders = req.headers.authorization
  if (!authHeaders || !authHeaders.startsWith('Bearer')) {
   throw new CustomError.UnauthenticatedError('Authentication Invalid')

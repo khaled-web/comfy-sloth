@@ -21,7 +21,8 @@ const ProductSchema = new mongoose.Schema({
  description: {
   type: String,
   required: [true, 'Please provide product description'],
-  maxLength: [1000, 'Name can not be more that 1000 characters']
+  maxLength: [1000, 'Name can not be more that 1000 characters'],
+  default: 'excellent Product with awesome material...'
  },
  image: {
   type: String,
@@ -30,13 +31,13 @@ const ProductSchema = new mongoose.Schema({
  category: {
   type: String,
   required: [true, 'Please provide product category'],
-  enum: ['office', 'kitchen', 'bedroom']
+  enum: ['office', 'kitchen', 'bedroom', 'living room', 'dining', 'kids']
  },
  company: {
   type: String,
   required: [true, 'Please provide company name'],
   enum: {
-   values: ['ikea', 'liddy', 'marcos'],
+   values: ['ikea', 'liddy', 'marcos', 'caressa'],
    message: '{VALUE} is not supported'
   }
  },

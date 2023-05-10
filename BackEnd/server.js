@@ -26,6 +26,9 @@ const errorHandlerMiddleware = require('./middleware/error-handler.js')
 const authenticateUser = require('./middleware/auth-JWT.js')
 //cookie-parser
 const cookieParser = require('cookie-parser')
+//fileUpload
+const fileUpload = require('express-fileupload')
+
 
 //.........
 //AppData
@@ -40,6 +43,9 @@ app.use(cors())
 app.use(express.json())
 //cookieParser(toGetTokenFor"1d")
 app.use(cookieParser(process.env.JWT_SECRET))
+//fileUpload-toSetImageIfNotAttachedInPostMan
+app.use(express.static('./public'))
+app.use(fileUpload())
 //GeneralRoute
 app.get('/', (req, res) => {
  res.json({
