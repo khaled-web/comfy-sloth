@@ -1,52 +1,54 @@
 //..............
 //importingData
 //..............
-const CustomError = require('../errors')
-const jwt = require('jsonwebtoken')
+const CustomError = require('../errors');
+const jwt = require('jsonwebtoken');
 const {
- isTokenValid
-} = require('../Utils')
+    isTokenValid
+} = require('../Utils');
 
 //.........
 //AppData
 //.........
 const authenticateUser = async (req, res, next) => {
- const token = req.signedCookies.token
+    const token = req.signedCookies.token;
 
- if (!token) {
-  throw new CustomError.UnauthenticatedError('Authentication Invalid')
- }
+    console.log({ cookies: req.signedCookies });
 
- try {
-  const {
-   name,
-   userId,
-   role
-  } = isTokenValid({
-   token
-  })
+    if (!token) {
+        throw new CustomError.UnauthenticatedError('Authentication Invalid');
+    }
 
-  req.user = {
-   name,
-   userId,
-   role
-  }
+    try {
+        const {
+            name,
+            userId,
+            role
+        } = isTokenValid({
+            token
+        });
 
-  next()
- } catch (error) {
-  throw new CustomError.UnauthenticatedError('Authentication Invalid')
- }
-}
+        req.user = {
+            name,
+            userId,
+            role
+        };
+
+        next();
+    } catch (error) {
+        throw new CustomError.UnauthenticatedError('Authentication Invalid');
+    }
+};
 
 //forAdminOnly
 const authorizePermissions = (...roles) => {
- return (req, res, next) => {
-  if (!roles.includes(req.user.role)) {
-   throw new CustomError.UnauthorizedError('Unauthorized to access this route')
-  }
-  next()
- }
-}
+    return (req, res, next) => {
+        if (!roles.includes(req.user.role)) {
+            throw new CustomError.UnauthorizedError('Unauthorized to access this route');
+        }
+        next();
+    };
+};
 
 
 //..............
@@ -54,6 +56,6 @@ const authorizePermissions = (...roles) => {
 //..............
 
 module.exports = {
- authenticateUser,
- authorizePermissions
-}
+    authenticateUser,
+    authorizePermissions
+};
