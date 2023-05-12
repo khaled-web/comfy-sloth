@@ -1,7 +1,7 @@
-import axios from 'axios'
-import React, { useContext, useEffect, useReducer } from 'react'
-import reducer from '../reducers/products_reducer'
-import { products_url as url } from '../utils/constants'
+import axios from 'axios';
+import React, { useContext, useEffect, useReducer } from 'react';
+import reducer from '../reducers/products_reducer';
+import { products_url as url } from '../utils/constants';
 import {
   SIDEBAR_OPEN,
   SIDEBAR_CLOSE,
@@ -11,33 +11,37 @@ import {
   GET_SINGLE_PRODUCT_BEGIN,
   GET_SINGLE_PRODUCT_SUCCESS,
   GET_SINGLE_PRODUCT_ERROR,
-} from '../actions'
+} from '../actions';
 
 const initialState = {
-  isSidebarOpen:true,
-  products_loading:false,
-  products_error:false,
-  products:[],
-  featured_products:[]
-}
+  isSidebarOpen: true,
+  products_loading: false,
+  products_error: false,
+  products: [],
+  featured_products: []
+};
 
-const ProductsContext = React.createContext()
+//localStorage
+const token = localStorage.getItem('token');
 
- const ProductsProvider = ({ children }) => {
-  const [state, dispatch]=useReducer(reducer, initialState)
+
+const ProductsContext = React.createContext();
+
+const ProductsProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   //openSidebar
-  const openSidebar = ()=>{
+  const openSidebar = () => {
     dispatch({
       type: SIDEBAR_OPEN
-    })
-  } 
+    });
+  };
   //closeSidebar
-  const closeSidebar = ()=>{
+  const closeSidebar = () => {
     dispatch({
       type: SIDEBAR_CLOSE
-    })
-  }
+    });
+  };
 
   //fetchProducts
   const token = localStorage.getItem("token")
@@ -62,26 +66,27 @@ const ProductsContext = React.createContext()
     }
   }
 
-  //useEffect 
-  useEffect(()=>{
-    fetchProducts()
-  },[])
-  
+
+  //useEffect
+  useEffect(() => {
+    fetchProducts(url);
+  }, []);
+
 
   return (
     <ProductsContext.Provider value={{
       ...state,
       openSidebar,
-      closeSidebar ,
+      closeSidebar,
 
-      }}>
+    }}>
       {children}
     </ProductsContext.Provider>
-  )
-}
+  );
+};
 // make sure use
- const useProductsContext = () => {  
-  return useContext(ProductsContext)
-}
+const useProductsContext = () => {
+  return useContext(ProductsContext);
+};
 
-export {ProductsProvider, useProductsContext}
+export { ProductsProvider, useProductsContext };

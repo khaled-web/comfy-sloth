@@ -1,35 +1,39 @@
 //..............
 //importingData
 //..............
-const CustomError = require('../errors')
+
 const jwt = require('jsonwebtoken')
 const user = require('../models/user.js')
+const CustomError = require('../errors');
+const jwt = require('jsonwebtoken');
+
 
 
 //.........
 //AppData
 //.........
 const auth = async (req, res, next) => {
- const authHeaders = req.headers.authorization
- if (!authHeaders || !authHeaders.startsWith('Bearer')) {
-  throw new CustomError.UnauthenticatedError('Authentication Invalid')
- }
- const token = authHeaders.split(' ')[1]
- try {
-  const payload = jwt.verify(token, process.env.JWT_SECRET)
-  // console.log(payload)
-  req.user = {
-   userId: payload.userId
-  }
-  next()
- } catch (error) {
-  throw new CustomError.UnauthenticatedError('Authentication Invalid')
- }
-}
+
+    const authHeaders = req.headers.authorization;
+    if (!authHeaders || !authHeaders.startsWith('Bearer')) {
+        throw new CustomError.UnauthenticatedError('Authentication Invalid');
+    }
+    const token = authHeaders.split(' ')[1];
+    try {
+        const payload = jwt.verify(token, process.env.JWT_SECRET);
+        // console.log(payload)
+        req.user = {
+            userId: payload.userId
+        };
+        next();
+    } catch (error) {
+        throw new CustomError.UnauthenticatedError('Authentication Invalid');
+    }
+};
 
 
 //..............
 //exportingData
 //..............
 
-module.exports = auth
+module.exports = auth;
