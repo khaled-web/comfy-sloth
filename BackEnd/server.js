@@ -23,7 +23,6 @@ const productRouter = require('./routes/Product.js');
 const notFoundMiddleware = require('./middleware/not-found.js');
 const errorHandlerMiddleware = require('./middleware/error-handler.js');
 //authenticateUser
-const authenticateUser = require('./middleware/auth-JWT.js');
 //cookie-parser
 const cookieParser = require('cookie-parser');
 //fileUpload

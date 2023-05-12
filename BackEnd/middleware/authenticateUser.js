@@ -11,7 +11,14 @@ const {
 //AppData
 //.........
 const authenticateUser = async (req, res, next) => {
-    const token = req.signedCookies.token;
+
+    // const token = req.signedCookies.token
+    const authHeaders = req.headers.authorization
+    if (!authHeaders || !authHeaders.startsWith('Bearer')) {
+        throw new CustomError.UnauthenticatedError('Authentication Invalid')
+    }
+    const token = authHeaders.split(' ')[1]
+
     console.log(req.signedCookies);
     if (!token) {
         throw new CustomError.UnauthenticatedError('Authentication Invalid');
