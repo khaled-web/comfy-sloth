@@ -40,15 +40,31 @@ const ProductsContext = React.createContext()
   }
 
   //fetchProducts
-  const fetchProducts = async (url)=>{
+  const token = localStorage.getItem("token")
+  const fetchProducts = async ()=>{
     dispatch({type:GET_PRODUCTS_BEGIN})
-    const response = await axios.get('http://localhost:5000/api/v1/product')
-    console.log(response)
+    try {      
+      const response = await axios.get('http://localhost:5000/api/v1/product',{
+        headers:{
+          Authorization: 'Bearer ' + token
+        }
+      })
+      const products = response.data.product
+      dispatch({
+        type:GET_PRODUCTS_SUCCESS,
+      payload:products
+    })
+      console.log(products)
+    } catch (error) {
+      dispatch({
+        type:GET_PRODUCTS_ERROR
+      })
+    }
   }
 
-  //useEffect
+  //useEffect 
   useEffect(()=>{
-    fetchProducts(url)
+    fetchProducts()
   },[])
   
 

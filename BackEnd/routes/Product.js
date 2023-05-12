@@ -15,14 +15,14 @@ const {
  authenticateUser,
  authorizePermissions
 } = require('../middleware/authenticateUser.js')
-const authAuthenticatedUser = require('../middleware/auth-JWT.js')
+
 
 //............
 //App
 //............
 router.route('/').post(authenticateUser, authorizePermissions('admin'), createProduct)
 
-router.route('/').get(authAuthenticatedUser, getAllProducts)
+router.route('/').get(authenticateUser, authorizePermissions('admin'), getAllProducts)
 
 router.route('/:id').get(authenticateUser, authorizePermissions('admin'), getSingleProduct)
 

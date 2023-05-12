@@ -1,14 +1,6 @@
-import React from 'react'
-import { useFilterContext } from '../context/filter_context'
-import GridView from './GridView'
-import ListView from './ListView'
 import styled from 'styled-components'
 
-const ProductList = () => {
-  return <h4>product list</h4>
-}
-
-const Wrapper = styled.article `
+const ProductStyled = styled.article `
   .container {
     position: relative;
     background: var(--clr-black);
@@ -64,5 +56,4 @@ const Wrapper = styled.article `
     letter-spacing: var(--spacing);
   }
 `
-
-export default ProductList
+export default ProductStyled

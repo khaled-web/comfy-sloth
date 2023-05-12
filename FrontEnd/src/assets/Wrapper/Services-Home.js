@@ -20,7 +20,7 @@ const ServicesStyledPage = styled.section `
   .services-center {
     margin-top: 4rem;
     display: grid;
-    gap: 2.5rem;
+    gap: 1.25rem;
   }
   .service {
     background: var(--clr-primary-7);
