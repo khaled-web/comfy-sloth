@@ -62,13 +62,34 @@ function App() {
             <Home/>
           </ProtectedRoute>
         }/>
-        <Route path='/about' element={<About/>}/>
-        <Route path='/cart' element={<Cart/>}/>
-        <Route path='/products' element={<Product/>}/>
-        <Route path='/products/:id' element={<SingleProduct/>}/>
-        <Route path='/checkout' element={<Checkout/>}/>
+        <Route path='/about' element={
+          <ProtectedRoute>
+            <About/>
+          </ProtectedRoute>
+        }/>
+        <Route path='/cart' element={
+          <ProtectedRoute>
+            <Cart/>
+          </ProtectedRoute>
+        }/>
+        <Route path='/products' element={
+          <ProtectedRoute>
+            <Product/>
+          </ProtectedRoute>
+        }/>
+        <Route path='/products/:id' element={
+        <ProtectedRoute>
+          <SingleProduct/>
+        </ProtectedRoute>
+        }/>
+        <Route path='/checkout' element={
+        <ProtectedRoute>
+          <Checkout/>
+        </ProtectedRoute>
+        }/>
         <Route path='*' element={<Error/>}/>
       </Routes>
+      <Footer/>
     </BrowserRouter>
   )
 }

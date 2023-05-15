@@ -102,7 +102,7 @@ export const UserProvider = ({ children }) => {
   const loginUser = async (currentUser)=>{
     dispatch({type:LOGIN_USER_BEGIN})
     try {
-      const response = await axios.post('http://localhost:5001/api/v1/auth/login', currentUser)
+      const response = await axios.post('http://localhost:5000/api/v1/auth/login', currentUser)
       console.log(response)
       const {token, tokenUser} = response.data
       dispatch({

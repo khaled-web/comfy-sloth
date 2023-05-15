@@ -20,6 +20,7 @@ import StripeCheckout from './StripeCheckout'
 import Logo from './Logo.js'
 import FormRow from './FormRow.js'
 import Alert from './Alert'
+
 export {
   FeaturedProducts,
   Navbar,

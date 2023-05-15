@@ -9,15 +9,14 @@ import {
   Footer
 } from '../components'
 const HomePage = () => {
-  return (
+  return ( 
     <main>
-      <Navbar/>
-      <Sidebar/>
-      <Hero/>
-      <FeaturedProducts/>
-      <Services/>
-      <Contact/>
-      <Footer/>
+    <Navbar/>
+    <Sidebar/>
+    <Hero/>
+    <FeaturedProducts/>
+    <Services/>
+    <Contact/>
     </main>
   )
 }

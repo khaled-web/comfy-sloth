@@ -18,13 +18,13 @@ const initialState = {
   products_loading: false,
   products_error: false,
   products: [],
-  featured_products: []
+  featured_products: [],
+  single_product_loading:false,
+  single_product_error: false,
+  single_product: {}
 };
 
 //localStorage
-const token = localStorage.getItem('token');
-
-
 const ProductsContext = React.createContext();
 
 const ProductsProvider = ({ children }) => {
@@ -35,6 +35,11 @@ const ProductsProvider = ({ children }) => {
     dispatch({
       type: SIDEBAR_OPEN
     });
+    try {
+      
+    } catch (error) {
+      dispatch({type:GET_SINGLE_PRODUCT_ERROR})
+    }
   };
   //closeSidebar
   const closeSidebar = () => {
@@ -58,7 +63,7 @@ const ProductsProvider = ({ children }) => {
         type:GET_PRODUCTS_SUCCESS,
       payload:products
     })
-      console.log(products)
+      // console.log(products)
     } catch (error) {
       dispatch({
         type:GET_PRODUCTS_ERROR
@@ -66,10 +71,26 @@ const ProductsProvider = ({ children }) => {
     }
   }
 
+  //fetchSingleProduct
+  const fetchSingleProduct = async (id)=>{
+    dispatch({type:GET_SINGLE_PRODUCT_BEGIN})
+    try {
+      const response = await axios.get(`http://localhost:5000/api/v1/product/${id}`,{
+        headers:{
+          Authorization: 'Bearer ' + token
+        }
+      })
+      const singleProduct = response.data.product
+      dispatch({type:GET_SINGLE_PRODUCT_SUCCESS,payload:singleProduct})
+    } catch (error) {
+      dispatch({type:GET_SINGLE_PRODUCT_ERROR})
+    }
+  }
+
 
   //useEffect
   useEffect(() => {
-    fetchProducts(url);
+    fetchProducts();
   }, []);
 
 
@@ -78,6 +99,7 @@ const ProductsProvider = ({ children }) => {
       ...state,
       openSidebar,
       closeSidebar,
+      fetchSingleProduct
 
     }}>
       {children}

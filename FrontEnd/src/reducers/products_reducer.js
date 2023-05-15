@@ -48,7 +48,31 @@ const products_reducer = (state, action) => {
       products_loading: false,
       products_error: true
     }
-
+  }
+  //singleProduct-began
+  if (action.type === GET_SINGLE_PRODUCT_BEGIN) {
+    return {
+      ...state,
+      single_product_loading: true,
+      single_product_error: false
+    }
+  }
+  //singleProduct-success
+  if (action.type === GET_SINGLE_PRODUCT_SUCCESS) {
+    return {
+      ...state,
+      single_product_loading: false,
+      single_product_error: false,
+      single_product: action.payload
+    }
+  }
+  //singleProduct-error
+  if (action.type === GET_SINGLE_PRODUCT_ERROR) {
+    return {
+      ...state,
+      single_product_error: true,
+      single_product_loading: false
+    }
   }
 
   throw new Error(`No Matching "${action.type}" - action type`)

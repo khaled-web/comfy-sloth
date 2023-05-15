@@ -22,9 +22,9 @@ const {
 //............
 router.route('/').post(authenticateUser, authorizePermissions('admin'), createProduct)
 
-router.route('/').get(authenticateUser, authorizePermissions('admin'), getAllProducts)
+router.route('/').get(authenticateUser, getAllProducts)
 
-router.route('/:id').get(authenticateUser, authorizePermissions('admin'), getSingleProduct)
+router.route('/:id').get(authenticateUser, getSingleProduct)
 
 router.route('/:id').patch(authenticateUser, authorizePermissions('admin'), updateProduct)
 
