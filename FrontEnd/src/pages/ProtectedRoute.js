@@ -5,7 +5,7 @@ import {useUserContext} from '../context/user_context.js'
 const ProtectedRoute = ({children}) => {
  const {user} = useUserContext()
  if(!user){
-  return <Navigate to='/register'/>
+  return <Navigate to='/landingPage'/>
  }
   return children
 }

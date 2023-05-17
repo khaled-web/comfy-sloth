@@ -15,7 +15,14 @@ import {
 } from '../components'
 
 const CartPage = () => {
-  return <h4> cart page </h4>
+  return (
+    <main>
+      <Navbar/>
+      <Sidebar/>
+      <h1>cartPage</h1>
+      <Footer/>
+    </main>
+  )
 }
 
 const Wrapper = styled.main `

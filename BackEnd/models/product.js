@@ -57,11 +57,15 @@ const ProductSchema = new mongoose.Schema({
  inventory: {
   type: Number,
   required: true,
-  default: 15
+  default: 10
  },
  averageRating: {
   type: Number,
-  default: 0
+  default: 3.5
+ },
+ reviews: {
+  type: Number,
+  default: 100
  },
  user: {
   type: mongoose.Types.ObjectId,

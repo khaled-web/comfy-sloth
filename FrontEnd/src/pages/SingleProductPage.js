@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useProductsContext } from '../context/products_context'
+import { useUserContext } from '../context/user_context'
 import { single_product_url as url } from '../utils/constants'
 import { formatPrice } from '../utils/helpers'
 import {
@@ -25,11 +26,11 @@ const SingleProductPage = () => {
     single_product_error:error,
     single_product:product,
     fetchSingleProduct
-  }=useProductsContext()
+  }=useUserContext()
 
   useEffect(()=>{
     fetchSingleProduct(id)
-  },[id])
+  },[])
 
   useEffect(()=>{
     if(error){
@@ -45,7 +46,7 @@ const SingleProductPage = () => {
   if(error){
     return <Error/>
   }
-  const {company, description, image, name, price, _id:sku,stock=3, stars=3.5, reviews=100}=product
+  const {company, description, image, name, price, _id:sku,inventory, averageRating:stars, reviews}=product
   return(
     <Wrapper>
       <Navbar/>  
@@ -62,7 +63,7 @@ const SingleProductPage = () => {
             <p className='description'>{description}</p>
             <p className="info">
               <span>available :</span>
-              {stock}
+              {inventory}
             </p>
             <p className='info'>
               <span>SKU :</span>
@@ -73,7 +74,7 @@ const SingleProductPage = () => {
               {company}
             </p>
             <hr/>
-            {stock > 0 && <AddToCart product={product}/>}
+            {inventory > 0 && <AddToCart product={product}/>}
           </section>
         </div>
       </div>

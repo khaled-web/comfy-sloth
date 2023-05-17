@@ -14,7 +14,8 @@ import {
  SingleProduct,
 Register,
 DashBoard,
-ProtectedRoute} from './pages'
+ProtectedRoute,
+LandingPage} from './pages'
 
 
 function App() {
@@ -56,6 +57,7 @@ function App() {
 
     <BrowserRouter>
       <Routes>
+        <Route path ='/landingPage' element={<LandingPage/>}/>
         <Route path='/register' element={<Register/>}/>
         <Route path='/' element={
           <ProtectedRoute>
@@ -89,7 +91,6 @@ function App() {
         }/>
         <Route path='*' element={<Error/>}/>
       </Routes>
-      <Footer/>
     </BrowserRouter>
   )
 }

@@ -9,6 +9,7 @@ import Product from './ProductsPage.js'
 import SingleProduct from './SingleProductPage.js'
 import Register from './Register.js'
 import ProtectedRoute from './ProtectedRoute.js'
+import LandingPage from './LandingPage.js'
 
 export {
  Home,
@@ -21,5 +22,6 @@ export {
  Product,
  SingleProduct,
  Register,
- ProtectedRoute
+ ProtectedRoute,
+ LandingPage
 }

@@ -1,5 +1,6 @@
 import React from 'react'
 import { useProductsContext } from '../context/products_context'
+import { useUserContext } from '../context/user_context'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import Error from './Error'
@@ -8,7 +9,7 @@ import Product from './Product'
 import Wrapper from '../assets/Wrapper/FeaturedProduct.js'
 
 const FeaturedProducts = () => {
-  const {products_loading,products_error,featured_products}=useProductsContext()
+  const {products_loading,products_error,featured_products}=useUserContext()
   if(products_loading){
     return <Loading/>
   }

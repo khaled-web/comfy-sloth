@@ -17,37 +17,18 @@ const Product = ({
   price,
   name
 }) => {
-  console.log(id)
   return <Wrapper >
-    <
-    div className = "container" >
-    <
-    img src = {
-      image
-    }
-  alt = {
-    name
-  }
-  /> <
-  Link to = {
-    `/products/${id}`
-  }
-  className = 'link' >
-    <
-    FaSearch / >
-    <
-    /Link> <
-    /div> <
-    footer >
-    <
-    h5 > {
-      name
-    } < /h5> <
-    p > {
-      formatPrice(price)
-    } < /p> <
-    /footer> <
-    /Wrapper>
+    <div className = "container" >
+    <img src = {image} alt = {name}/>
+     <Link to = {`/products/${id}`} className = 'link'>
+    <FaSearch/>
+    </Link> 
+    </div> 
+    <footer>
+    <h5> {name} </h5> 
+    <p> {formatPrice(price)} </p> 
+    </footer> 
+    </Wrapper>
 }
 
 

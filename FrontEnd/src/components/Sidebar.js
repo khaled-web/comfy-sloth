@@ -10,7 +10,7 @@ import { useUserContext } from '../context/user_context'
 import Wrapper from '../assets/Wrapper/SideBarContainer.js'
 
 const Sidebar = () => {
-  const {isSidebarOpen, closeSidebar} = useProductsContext()
+  const {isSidebarOpen, closeSidebar} = useUserContext()
   return(
     <Wrapper>
       <aside className={`${isSidebarOpen?'sidebar show-sidebar' : 'sidebar'}`}>
@@ -29,9 +29,6 @@ const Sidebar = () => {
               </li>
             )
           })}
-              <li>
-                <Link to='/checkout' onClick={()=>closeSidebar()}>checkout</Link>
-              </li>
         </ul>
         <CartButtons/>
       </aside>

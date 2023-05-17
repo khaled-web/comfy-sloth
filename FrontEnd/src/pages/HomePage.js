@@ -17,6 +17,7 @@ const HomePage = () => {
     <FeaturedProducts/>
     <Services/>
     <Contact/>
+    <Footer/>
     </main>
   )
 }

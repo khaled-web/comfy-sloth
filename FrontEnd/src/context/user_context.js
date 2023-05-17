@@ -5,6 +5,7 @@ import React, { useContext, useEffect, useState, useReducer } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 import reducer from '../reducers/user_reducer'
 import {
+  //user
  DISPLAY_ALERT,
  CLEAR_ALERT,
  REGISTER_USER_BEGIN,
@@ -13,7 +14,16 @@ import {
  LOGIN_USER_BEGIN,
  LOGIN_USER_SUCCESS,
  LOGIN_USER_ERROR,
- LOGOUT_USER
+ LOGOUT_USER,
+ //product
+  SIDEBAR_OPEN,
+  SIDEBAR_CLOSE,
+  GET_PRODUCTS_BEGIN,
+  GET_PRODUCTS_SUCCESS,
+  GET_PRODUCTS_ERROR,
+  GET_SINGLE_PRODUCT_BEGIN,
+  GET_SINGLE_PRODUCT_SUCCESS,
+  GET_SINGLE_PRODUCT_ERROR,
 } from '../actions'
 import axios from 'axios'
 
@@ -30,13 +40,24 @@ const Role = localStorage.getItem('userRole')
 
 //initialState
 const initialState = {
+  //user
   isLoading:false,
   showAlert:false,
   AlertText:'',
   AlertType:'',
   user:user?JSON.parse(user):null,
   token:token,
-  userRole:Role
+  userRole:Role,
+  //product
+  isSidebarOpen: true,
+  products_loading: false,
+  products_error: false,
+  products: [],
+  featured_products: [],
+  single_product_loading:false,
+  single_product_error: false,
+  single_product: {}
+
 }
 
 const UserContext = React.createContext()
@@ -131,6 +152,67 @@ export const UserProvider = ({ children }) => {
     removeUserFromLocalStorage()
   }
 
+  //openSidebar
+  const openSidebar = () => {
+    dispatch({
+      type: SIDEBAR_OPEN
+    });
+    try {
+      
+    } catch (error) {
+      dispatch({type:GET_SINGLE_PRODUCT_ERROR})
+    }
+  };
+  //closeSidebar
+  const closeSidebar = () => {
+    dispatch({
+      type: SIDEBAR_CLOSE
+    });
+  };
+
+  //fetchProduct
+  const fetchProducts = async ()=>{
+    dispatch({type:GET_PRODUCTS_BEGIN})
+    try {      
+      const response = await axios.get('http://localhost:5000/api/v1/product',{
+        headers:{
+          Authorization: 'Bearer ' + token
+        }
+      })
+      const products = response.data.product
+      dispatch({
+        type:GET_PRODUCTS_SUCCESS,
+      payload:products
+    })
+      console.log(products)
+    } catch (error) {
+      dispatch({
+        type:GET_PRODUCTS_ERROR
+      })
+    }
+  }
+
+  //fetchSingleProduct
+  const fetchSingleProduct = async (id)=>{
+    dispatch({type:GET_SINGLE_PRODUCT_BEGIN})
+    try {
+      const response = await axios.get(`http://localhost:5000/api/v1/product/${id}`,{
+        headers:{
+          Authorization: 'Bearer ' + token
+        }
+      })
+      const singleProduct = response.data.product
+      dispatch({type:GET_SINGLE_PRODUCT_SUCCESS,payload:singleProduct})
+    } catch (error) {
+      dispatch({type:GET_SINGLE_PRODUCT_ERROR})
+    }
+  }
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
+
 
   return (
     <UserContext.Provider value={{
@@ -139,7 +221,10 @@ export const UserProvider = ({ children }) => {
       clearAlert,
       registerUser,
       loginUser,
-      logoutUser
+      logoutUser,
+      openSidebar,
+      closeSidebar,
+      fetchSingleProduct
     }}>{children}</UserContext.Provider>
   )
 }
