@@ -49,7 +49,7 @@ const initialState = {
   token:token,
   userRole:Role,
   //product
-  isSidebarOpen: true,
+  isSidebarOpen: false,
   products_loading: false,
   products_error: false,
   products: [],

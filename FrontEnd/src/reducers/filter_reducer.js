@@ -16,7 +16,22 @@ const filter_reducer = (state, action) => {
       ...state,
       filtered_products: [...action.payload],
       all_products: [...action.payload]
+    }
+  }
 
+  //setGridView
+  if(action.type === SET_GRIDVIEW){
+    return{
+      ...state,
+      grid_view:true
+    }
+  }
+
+  //setListView
+  if(action.type === SET_LISTVIEW){
+    return{
+      ...state,
+      grid_view:false
     }
   }
   throw new Error(`No Matching "${action.type}" - action type`)
