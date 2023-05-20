@@ -101,7 +101,7 @@ const user_reducer = (state, action) => {
    AlertText: action.payload.msg
   }
  }
- //logo
+ //logout
  if (action.type === LOGOUT_USER) {
   return {
    ...state,
@@ -124,14 +124,14 @@ const user_reducer = (state, action) => {
    isSidebarOpen: false
   }
  }
- //product-begin
+ //product-product-begin
  if (action.type === GET_PRODUCTS_BEGIN) {
   return {
    ...state,
    products_loading: true,
   }
  }
- //product-success
+ //product-product-success
  if (action.type === GET_PRODUCTS_SUCCESS) {
   const featuredProducts = action.payload.filter((product) => product.featured === true)
   return {
@@ -141,7 +141,7 @@ const user_reducer = (state, action) => {
    featured_products: featuredProducts
   }
  }
- //product-error
+ //product-product-error
  if (action.type === GET_PRODUCTS_ERROR) {
   return {
    ...state,
@@ -149,7 +149,7 @@ const user_reducer = (state, action) => {
    products_error: true
   }
  }
- //singleProduct-began
+ //product-singleProduct-began
  if (action.type === GET_SINGLE_PRODUCT_BEGIN) {
   return {
    ...state,
@@ -157,7 +157,7 @@ const user_reducer = (state, action) => {
    single_product_error: false
   }
  }
- //singleProduct-success
+ //product-singleProduct-success
  if (action.type === GET_SINGLE_PRODUCT_SUCCESS) {
   return {
    ...state,
@@ -166,7 +166,7 @@ const user_reducer = (state, action) => {
    single_product: action.payload
   }
  }
- //singleProduct-error
+ //product-singleProduct-error
  if (action.type === GET_SINGLE_PRODUCT_ERROR) {
   return {
    ...state,

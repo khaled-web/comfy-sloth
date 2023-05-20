@@ -56,8 +56,7 @@ const initialState = {
   featured_products: [],
   single_product_loading:false,
   single_product_error: false,
-  single_product: {}
-
+  single_product: {},
 }
 
 const UserContext = React.createContext()
@@ -211,7 +210,6 @@ export const UserProvider = ({ children }) => {
   useEffect(() => {
     fetchProducts();
   }, []);
-
 
 
   return (

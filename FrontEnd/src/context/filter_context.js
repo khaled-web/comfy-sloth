@@ -10,15 +10,29 @@ import {
   FILTER_PRODUCTS,
   CLEAR_FILTERS,
 } from '../actions'
-import { useProductsContext } from './products_context'
+import { useUserContext } from './user_context'
 
-const initialState = {}
+const initialState = {
+  filtered_products: [],
+  all_products: [],
+}
 
 const FilterContext = React.createContext()
 
 export const FilterProvider = ({ children }) => {
+  const {products} = useUserContext()
+  const [state, dispatch] = useReducer(reducer, initialState)
+
+  useEffect(()=>{
+    dispatch({
+      type:LOAD_PRODUCTS,
+      payload:products
+    })
+  },[products])
   return (
-    <FilterContext.Provider value='filter context'>
+    <FilterContext.Provider value={{
+      ...state
+    }}>
       {children}
     </FilterContext.Provider>
   )

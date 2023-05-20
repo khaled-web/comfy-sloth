@@ -115,8 +115,7 @@ const ProductsProvider = ({
   }, []);
 
 
-  return ( <
-    ProductsContext.Provider value = {
+  return ( <ProductsContext.Provider value = {
       {
         ...state,
         openSidebar,
@@ -126,8 +125,7 @@ const ProductsProvider = ({
       }
     } > {
       children
-    } <
-    /ProductsContext.Provider>
+    } </ProductsContext.Provider>
   );
 };
 // make sure use
