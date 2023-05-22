@@ -86,6 +86,9 @@ const filterStyled = styled.section `
     font-size: 1rem;
     max-width: 200px;
   }
+  .shipping-input{
+    transform: translateX(-45px) translateY(2px);
+  }
   .clear-btn {
     background: var(--clr-red-dark);
     color: var(--clr-white);

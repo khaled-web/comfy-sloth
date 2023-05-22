@@ -97,7 +97,13 @@ const Filters = () => {
           min={min_price} max={max_price} value={price}/>
         </div>
         {/* end of price */}
-
+        
+        {/* shipping */}
+        <div className="form-control shipping">
+          <label htmlFor="shipping">free shipping</label>
+          <input type="checkbox" name="shipping" id="shipping" className='shipping-input' onClick={updateFilter} checked={shipping}/>
+        </div>
+        {/* end of shipping */}
       </form>
     </div>
     </Wrapper>  
