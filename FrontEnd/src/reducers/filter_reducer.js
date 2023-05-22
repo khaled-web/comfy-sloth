@@ -94,7 +94,6 @@ const filter_reducer = (state, action) => {
     console.log('filtering Products...')
     return{
       ...state,
-
     }
   }
   throw new Error(`No Matching "${action.type}" - action type`)
