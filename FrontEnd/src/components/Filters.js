@@ -62,6 +62,42 @@ const Filters = () => {
           </select>
         </div>
         {/* end of companies */}
+
+        {/* colors */}
+        <div className="form-control">
+          <h5>colors</h5>
+          <div className="colors">
+            {colors.map((c,index)=>{
+              if(c === 'all'){
+                return(
+                  <button key={index} name='color' onClick={updateFilter} data-color='all' className={
+                    `${color === 'all' ? 'all-btn active' : 'all-btn'}`
+                  }>
+                    all
+                  </button>
+                )
+              }
+              return(
+                <button key={index} name='color' style={{background:c}}className={`${color === c?'color-btn active':'color-btn'}`} data-color={c} onClick={updateFilter}>
+                  {color === c?<FaCheck/>:null}
+                </button>
+              )
+            })}
+          </div>
+        </div>
+        {/* end of colors */}
+
+        {/* price */}
+        <div className="form-control">
+          <h5>price</h5>
+          <p className="price">
+            {formatPrice(price)}
+          </p>
+          <input type="range" name="price" onChange={updateFilter}
+          min={min_price} max={max_price} value={price}/>
+        </div>
+        {/* end of price */}
+
       </form>
     </div>
     </Wrapper>  
