@@ -85,7 +85,9 @@ export const FilterProvider = ({ children }) => {
   }
 
   //clearFilter
-  const clearFilter = ()=>{}
+  const clearFilter = ()=>{
+    dispatch({type:CLEAR_FILTERS})
+  }
   return (
     <FilterContext.Provider value={{
       ...state,

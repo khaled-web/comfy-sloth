@@ -29,6 +29,7 @@ const Filters = () => {
     <Wrapper>
     <div className="content">
       <form onSubmit={(e)=>e.preventDefault()}>
+
         {/* search input */}
         <div className="form-control">
           <input type="text" name='text' placeholder='search' className='search-input' value={text} onChange={updateFilter}/>
@@ -105,6 +106,7 @@ const Filters = () => {
         </div>
         {/* end of shipping */}
       </form>
+      <button type='button' onClick={clearFilter} className='clear-btn'> clear filter</button>
     </div>
     </Wrapper>  
   )
