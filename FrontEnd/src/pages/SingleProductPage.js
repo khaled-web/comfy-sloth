@@ -4,6 +4,7 @@ import { useProductsContext } from '../context/products_context'
 import { useUserContext } from '../context/user_context'
 import { single_product_url as url } from '../utils/constants'
 import { formatPrice } from '../utils/helpers'
+import { FaCheck } from 'react-icons/fa'
 import {
   Loading,
   Error,
@@ -84,7 +85,7 @@ const SingleProductPage = () => {
               <span>brand :</span>
               {company}
             </p>
-            {freeShipping?<p className='info'><span>free shipping</span></p>:null}
+            {freeShipping?<p className='info'><span className='span-shipping'>free shipping</span><FaCheck/></p>:null}
             <hr/>
             {inventory > 0 && <AddToCart product={product}/>}
           </section>

@@ -12,7 +12,9 @@ root.render(
  <React.StrictMode> 
  <UserProvider>
  <FilterProvider>
+  <CartProvider>
   <App/>
+  </CartProvider>
  </FilterProvider>
  </UserProvider>
  </React.StrictMode>

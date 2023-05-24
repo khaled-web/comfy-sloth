@@ -22,6 +22,7 @@ const SingleProductStyled = styled.main `
       font-weight: 700;
     }
   }
+ 
 
   @media (min-width: 992px) {
     .product-center {

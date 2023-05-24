@@ -6,10 +6,13 @@ import { useCartContext } from '../context/cart_context'
 import AmountButtons from './AmountButtons'
 import Wrapper from '../assets/Wrapper/AddToCartStyled'
 const AddToCart = ({product}) => {
+  const {
+    addToCart
+  } = useCartContext()
   const {_id:id, inventory, colors}=product
-  console.log(id)
-  console.log(inventory)  
-  console.log(colors)
+  const [amount, setAmount]=useState(1)
+  const [mainColor, setMainColor]=useState(colors[0])
+
   const increase = ()=>{
     setAmount((oldAmount)=>{
       let tempAmount = oldAmount + 1
@@ -29,8 +32,7 @@ const AddToCart = ({product}) => {
       return tempAmount
     })
   }
-  const [amount, setAmount]=useState(1)
-  const [mainColor, setMainColor]=useState(colors[0])
+
   return (
     <Wrapper>
       <div className="colors">
