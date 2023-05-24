@@ -46,7 +46,18 @@ const SingleProductPage = () => {
   if(error){
     return <Error/>
   }
-  const {company, description, image, name, price, _id:sku,inventory, averageRating:stars, reviews}=product
+  const {
+    company,
+    description,
+    image,
+    name,
+    price,
+    _id: sku,
+    inventory,
+    averageRating: stars,
+    reviews,
+    freeShipping
+  } = product
   return(
     <Wrapper>
       <Navbar/>  
@@ -73,6 +84,7 @@ const SingleProductPage = () => {
               <span>brand :</span>
               {company}
             </p>
+            {freeShipping?<p className='info'><span>free shipping</span></p>:null}
             <hr/>
             {inventory > 0 && <AddToCart product={product}/>}
           </section>
