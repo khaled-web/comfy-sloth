@@ -19,7 +19,7 @@ const Product = ({
 }) => {
   return <Wrapper >
     <div className = "container" >
-    <img src = {image} alt = {name}/>
+    <img src={image} alt = {name}/>
      <Link to = {`/products/${id}`} className = 'link'>
     <FaSearch/>
     </Link> 

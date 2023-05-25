@@ -13,26 +13,37 @@ import {
   Sidebar,
   Footer
 } from '../components'
+import Wrapper from '../assets/Wrapper/CartPageStyled'
 
 const CartPage = () => {
+  const {cart} = useCartContext()
+  if(cart.length<1){
+    return (
+    <Wrapper>
+      <Navbar/>
+      <Sidebar/>
+      <div className="empty page-100">
+        <h2>Your cart is empty</h2>
+        <Link to='/products' className='btn'>
+          fill it
+        </Link>
+      </div>
+      <Footer/>
+    </Wrapper>
+    )
+  }
   return (
     <main>
       <Navbar/>
       <Sidebar/>
-      <h1>cartPage</h1>
+      <PageHero title='cart'/>
+      <Wrapper className='page'>
+      <CartContent/>
+      </Wrapper>
       <Footer/>
     </main>
   )
 }
 
-const Wrapper = styled.main `
-  .empty {
-    text-align: center;
-    h2 {
-      margin-bottom: 1rem;
-      text-transform: none;
-    }
-  }
-`
 
 export default CartPage
