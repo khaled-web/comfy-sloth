@@ -95,7 +95,8 @@ export const UserProvider = ({ children }) => {
   const registerUser = async (currentUser)=>{
     dispatch({type:REGISTER_USER_BEGIN})
     try {
-      const response = await axios.post('http://localhost:5000/api/v1/auth/register',currentUser)
+      // const response = await axios.post('http://localhost:5000/api/v1/auth/register', currentUser)
+      const response = await axios.post('https://comfysloth-backend.onrender.com/api/v1/auth/register', currentUser)
       console.log(response)
       const {token,tokenUser} = response.data
       dispatch({
@@ -123,7 +124,8 @@ export const UserProvider = ({ children }) => {
   const loginUser = async (currentUser)=>{
     dispatch({type:LOGIN_USER_BEGIN})
     try {
-      const response = await axios.post('http://localhost:5000/api/v1/auth/login', currentUser)
+      // const response = await axios.post('http://localhost:5000/api/v1/auth/login', currentUser)
+      const response = await axios.post('https://comfysloth-backend.onrender.com/api/v1/auth/login', currentUser)
       console.log(response)
       const {token, tokenUser} = response.data
       dispatch({
@@ -174,7 +176,8 @@ export const UserProvider = ({ children }) => {
   const fetchProducts = async ()=>{
     dispatch({type:GET_PRODUCTS_BEGIN})
     try {      
-      const response = await axios.get('http://localhost:5000/api/v1/product',{
+      // const response = await axios.get('http://localhost:5000/api/v1/product',{
+      const response = await axios.get('https://comfysloth-backend.onrender.com/api/v1/product',{
         headers:{
           Authorization: 'Bearer ' + token
         }
@@ -196,7 +199,9 @@ export const UserProvider = ({ children }) => {
   const fetchSingleProduct = async (id)=>{
     dispatch({type:GET_SINGLE_PRODUCT_BEGIN})
     try {
-      const response = await axios.get(`http://localhost:5000/api/v1/product/${id}`,{
+      // const response = await axios.get(`http://localhost:5000/api/v1/product/${id}`,{
+      const response = await axios.get(`https://comfysloth-backend.onrender.com/api/v1/product/${id}`,{
+
         headers:{
           Authorization: 'Bearer ' + token
         }

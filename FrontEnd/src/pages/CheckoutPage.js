@@ -4,7 +4,7 @@ import { PageHero, StripeCheckout, Navbar, Sidebar, Footer } from '../components
 // extra imports
 import { useCartContext } from '../context/cart_context'
 import { Link } from 'react-router-dom'
-import Wrapper from '../assets/Wrapper/CheckoutStyled'
+import Wrapper from '../assets/Wrapper/CartPageStyled'
 const CheckoutPage = () => {
   const {cart}=useCartContext()
   return (
@@ -14,12 +14,12 @@ const CheckoutPage = () => {
       <PageHero title='checkout'/>
       <Wrapper className='page'>
         {cart.length<1?(
-          <div className="empty">
+          <main className="empty">
             <h2>your cart is empty</h2>
             <Link to='/products' className='btn'>
             fill it
             </Link>
-          </div>
+          </main>
         ):(
           <StripeCheckout/>
         )}

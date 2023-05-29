@@ -12,7 +12,7 @@ const Hero = () => {
         comfort zone
       </h1>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium iste facilis dignissimos similique autem nam ad molestias sint animi? Vero.
+        If you need to Make Your Home Authentic and Unique with Our Impressive Rustic Furniture, we have this reputation of both producing furniture, but also an incredible design sense and work ethic sense.
       </p>
       <Link to='/products' className='btn hero-btn'>
         show now

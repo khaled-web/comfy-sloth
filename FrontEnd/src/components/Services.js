@@ -12,7 +12,7 @@ const Services = () => {
             built only for you
           </h3>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad fuga vero temporibus vitae tempora esse, a quaerat corporis veritatis maxime.
+            To help you get started, here’ s a list of many types of furniture that you need to add to your cart,Culture shapes values.Values determine the future.
           </p>
         </article>
         <div className="services-center">

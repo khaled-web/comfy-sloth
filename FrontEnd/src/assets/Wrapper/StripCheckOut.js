@@ -138,9 +138,7 @@ const StripCheckOut = styled.section `
       width: 80vw;
     }
   }
-  .checkout-center{
-    display: none;
-  }
+
 `
 
 export default StripCheckOut

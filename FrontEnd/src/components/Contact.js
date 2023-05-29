@@ -11,7 +11,7 @@ const Contact = () => {
         </h3>
         <div className="content">
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste veritatis exercitationem pariatur qui doloribus quibusdam.
+            we have a new vision to make the best of anything that they build as furniture because The design creates culture.
           </p>
           <form action="https://formspree.io/f/mnqyoedy"
             method="POST" className='contact-form'>
