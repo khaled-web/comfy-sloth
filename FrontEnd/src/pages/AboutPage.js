@@ -24,7 +24,9 @@ const AboutPage = ()=>{
     </div> 
     </div> 
     <p>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit.Atque deserunt excepturi, praesentium maiores doloribus incidunt dolor ullam ex quos sapiente velit voluptates, blanditiis repudiandae laboriosam tempore cumque perferendis delectus explicabo autem suscipit consectetur illum accusantium modi ? Modi fugit eveniet facere architecto possimus impedit autem dolor tempore recusandae.Non ab quod numquam ipsum laboriosam reiciendis dolor, dolorum laborum quae dicta nihil eum dolore eos repudiandae voluptatum amet deleniti alias obcaecati placeat minima.Officiis inventore minima voluptates et similique autem quas, nesciunt ex facere dignissimos vitae quaerat earum ipsam cum consequuntur porro sint debitis.Minus nostrum accusamus provident maxime.Eveniet, recusandae omnis ?
+      we have a new vision to make the best of anything that they build as furniture because The design creates culture.Culture shapes values.Values determine the future.“To create a better everyday life for the many people.” This vision goes beyond home furnishing. We want to have a positive impact on the world – from the communities where we source our raw materials to the way our products help our customers live a more sustainable life at home.
+
+      By sharing what we do, and speaking up for what we believe in, we can be part of positive change in society.
     </p> 
     </article> 
     </Wrapper>
